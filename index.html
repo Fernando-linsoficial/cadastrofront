@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro de Documento e Foto</title>
+  <style>
+    video, canvas, img { max-width: 100%; margin-top: 10px; }
+    .container { max-width: 500px; margin: auto; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2>Cadastro de Documento e Foto</h2>
+  <form action="salvar.php" method="POST" enctype="multipart/form-data" onsubmit="return enviarImagem();">
+    
+    <label>Documento (PDF ou Imagem):</label><br>
+    <input type="file" name="documento" accept=".pdf,.jpg,.jpeg,.png" required><br><br>
+
+    <label>Captura Facial (use sua webcam):</label><br>
+    <video id="video" autoplay></video><br>
+    <button type="button" onclick="capturar()">Capturar Rosto</button><br>
+    <canvas id="canvas" style="display:none;"></canvas>
+    <input type="hidden" name="imagemFacial" id="imagemFacial">
+    <img id="preview" alt="Prévia da foto"><br><br>
+
+    <button type="submit">Cadastrar</button>
+  </form>
+</div>
+
+<script>
+  const video = document.getElementById('video');
+  const canvas = document.getElementById('canvas');
+  const imagemFacial = document.getElementById('imagemFacial');
+  const preview = document.getElementById('preview');
+
+  navigator.mediaDevices.getUserMedia({ video: true })
+    .then(stream => { video.srcObject = stream; });
+
+  function capturar() {
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    canvas.getContext('2d').drawImage(video, 0, 0);
+    const dataURL = canvas.toDataURL('image/png');
+    imagemFacial.value = dataURL;
+    preview.src = dataURL;
+  }
+
+  function enviarImagem() {
+    if (!imagemFacial.value) {
+      alert("Por favor, capture sua imagem facial.");
+      return false;
+    }
+    return true;
+  }
+</script>
+</body>
+</html>
