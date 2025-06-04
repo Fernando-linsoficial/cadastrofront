@@ -9,7 +9,7 @@
 <body>
   <main class="container">
     <div class="text">
-    <h1>Cadastro Para Reconhecimento Facial</h1>
+      <h1>Cadastro Para Reconhecimento Facial</h1>
     </div>
     <section class="form-section">
       <form action="salvar.php" method="POST" enctype="multipart/form-data" onsubmit="return enviarImagem();">
@@ -35,37 +35,10 @@
       <video id="video" autoplay playsinline></video>
       <button type="button" class="btn-capture" onclick="capturar()">Capturar Rosto</button>
       <canvas id="canvas" style="display:none;"></canvas>
-      <img id="preview" alt="Prévia da foto" />
+      <img id="preview" />
     </section>
   </main>
 
-  <script>
-    const video = document.getElementById('video');
-    const canvas = document.getElementById('canvas');
-    const imagemFacial = document.getElementById('imagemFacial');
-    const preview = document.getElementById('preview');
-
-    navigator.mediaDevices.getUserMedia({ video: true })
-      .then(stream => { video.srcObject = stream; })
-      .catch(() => alert("Não foi possível acessar a câmera."));
-
-    function capturar() {
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
-      canvas.getContext('2d').drawImage(video, 0, 0);
-      const dataURL = canvas.toDataURL('image/png');
-      imagemFacial.value = dataURL;
-      preview.src = dataURL;
-    }
-
-    function enviarImagem() {
-      if (!imagemFacial.value) {
-        alert("Por favor, capture sua imagem facial.");
-        return false;
-      }
-      return true;
-    }
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>

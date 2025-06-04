@@ -15,6 +15,7 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 20px;
+   opacity: 0.5;
 }
 
 /* Logo no topo */
@@ -116,13 +117,13 @@ button {
 }
 
 .btn-capture {
-  background-color: #4caf50;
+  background-color: #ffb800;
   color: white;
   margin-top: 20px;
 }
 
 .btn-capture:hover {
-  background-color: #3b8e40;
+  background-color: #ffb800;
 }
 
 /* Vídeo e imagem preview */
@@ -133,6 +134,7 @@ video, img#preview {
   box-shadow: 0 4px 18px rgba(2, 9, 89, 0.7);
   margin-top: 15px;
   background-color: #140663;
+   opacity: 0.5;
 }
 /* Canvas oculto */
 canvas {
