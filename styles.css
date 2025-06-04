@@ -9,13 +9,12 @@ body {
   background: url('images/foto_csc_2.png') no-repeat center center fixed;
   background-size: cover;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #020156;
+  color: #F2E313;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
-   opacity: 0.5;
 }
 
 /* Logo no topo */
@@ -59,9 +58,12 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgba(8, 2, 96, 0.237);
+  background-color: rgba(31, 3, 97, 0.224);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-radius: 12px;
   padding: 30px 25px;
+  border: 1px solid rgba(10, 3, 114, 0.3);
 }
 
 /* Labels */
@@ -107,23 +109,23 @@ button {
 }
 
 .btn-submit {
-  background-color: #ffd700;
+  background-color: #F2E313;
   color: #222;
   margin-top: 10px;
 }
 
 .btn-submit:hover {
-  background-color: #ffb800;
+  background-color: #c1b400;
 }
 
 .btn-capture {
-  background-color: #ffb800;
-  color: white;
+  background-color: #F2E313;
+  color: #222;
   margin-top: 20px;
 }
 
 .btn-capture:hover {
-  background-color: #ffb800;
+  background-color: #c1b400;
 }
 
 /* Vídeo e imagem preview */
@@ -131,10 +133,10 @@ video, img#preview {
   width: 100%;
   max-width: 380px;
   border-radius: 12px;
-  box-shadow: 0 4px 18px rgba(2, 9, 89, 0.7);
+  box-shadow: 0 4px 18px rgba(2, 9, 94, 0.658);
   margin-top: 15px;
-  background-color: #140663;
-   opacity: 0.5;
+  background-color: #130560ab;
+
 }
 /* Canvas oculto */
 canvas {
