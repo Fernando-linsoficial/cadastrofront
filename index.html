@@ -1,124 +1,43 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cadastro de Documento e Foto</title>
-  <style>
-    body {
-      background-color: royalblue;
-      color: yellow;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
-    }
-
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 40px;
-      background-color: #001f4d;
-      border-radius: 12px;
-      padding: 40px;
-      max-width: 1100px;
-      margin: auto;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    }
-
-    .form-section, .camera-section {
-      flex: 1;
-      min-width: 300px;
-    }
-
-    h2 {
-      text-align: center;
-      width: 100%;
-      color: yellow;
-      margin-bottom: 30px;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: bold;
-    }
-
-    input[type="text"],
-    input[type="email"],
-    input[type="file"],
-    button {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 20px;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-    }
-
-    input[type="text"],
-    input[type="email"] {
-      background-color: #ffffff;
-      color: #000;
-    }
-
-    input[type="file"] {
-      background-color: #ffffff;
-      color: #000;
-    }
-
-    button {
-      background-color: yellow;
-      color: royalblue;
-      cursor: pointer;
-      font-weight: bold;
-      margin-top: 10px;
-    }
-
-    button:hover {
-      background-color: gold;
-    }
-
-    video, canvas, img {
-      max-width: 100%;
-      margin-top: 10px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    }
-
-    .camera-section button {
-      margin-top: 20px;
-      margin-bottom: 20px;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="container">
-    <h2>Cadastro de Documento e Foto</h2>
-
-    <form class="form-section" action="salvar.php" method="POST" enctype="multipart/form-data" onsubmit="return enviarImagem();">
-      <label for="nome">Nome Completo:</label>
-      <input type="text" name="nome" id="nome" required>
-
-      <label for="serie">Série:</label>
-      <input type="text" name="serie" id="serie" required>
-
-      <label for="email">E-mail:</label>
-      <input type="email" name="email" id="email" required>
-
-      <label for="cpf">CPF:</label>
-      <input type="text" name="cpf" id="cpf" required>
-
-      <input type="hidden" name="imagemFacial" id="imagemFacial">
-      <button type="submit">Cadastrar</button>
-    </form>
-
-    <div class="camera-section">
-      <label>Captura Facial (use sua webcam):</label>
-      <video id="video" autoplay></video>
-      <button type="button" onclick="capturar()">Capturar Rosto</button>
-      <canvas id="canvas" style="display:none;"></canvas>
-      <img id="preview" alt="Prévia da foto">
+  <main class="container">
+    <div class="text">
+    <h1>Cadastro Para Reconhecimento Facial</h1>
     </div>
-  </div>
+    <section class="form-section">
+      <form action="salvar.php" method="POST" enctype="multipart/form-data" onsubmit="return enviarImagem();">
+        <label for="nome">Nome Completo:</label>
+        <input type="text" name="nome" id="nome" required />
+
+        <label for="serie">Série:</label>
+        <input type="text" name="serie" id="serie" required />
+
+        <label for="email">E-mail:</label>
+        <input type="email" name="email" id="email" required />
+
+        <label for="cpf">CPF:</label>
+        <input type="text" name="cpf" id="cpf" required />
+
+        <input type="hidden" name="imagemFacial" id="imagemFacial" />
+        <button type="submit" class="btn-submit">Cadastrar</button>
+      </form>
+    </section>
+
+    <section class="camera-section">
+      <label>Captura Facial (use sua webcam):</label>
+      <video id="video" autoplay playsinline></video>
+      <button type="button" class="btn-capture" onclick="capturar()">Capturar Rosto</button>
+      <canvas id="canvas" style="display:none;"></canvas>
+      <img id="preview" alt="Prévia da foto" />
+    </section>
+  </main>
 
   <script>
     const video = document.getElementById('video');
@@ -127,7 +46,8 @@
     const preview = document.getElementById('preview');
 
     navigator.mediaDevices.getUserMedia({ video: true })
-      .then(stream => { video.srcObject = stream; });
+      .then(stream => { video.srcObject = stream; })
+      .catch(() => alert("Não foi possível acessar a câmera."));
 
     function capturar() {
       canvas.width = video.videoWidth;
@@ -146,5 +66,6 @@
       return true;
     }
   </script>
+
 </body>
 </html>

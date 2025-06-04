@@ -1,0 +1,154 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: url('images/csc_2.webp') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #020156;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Logo no topo */
+.logo-container {
+  margin-bottom: 30px;
+}
+
+.logo-container img {
+  width: 160px;
+  filter: drop-shadow(0 0 5px rgba(19, 0, 113, 0.7));
+}
+
+/* Container principal */
+.container {
+  border-radius: 16px;
+  max-width: 1100px;
+  width: 100%;
+
+  display: flex;
+  gap: 40px;
+  flex-wrap: nowrap;
+  justify-content: center;
+
+  padding: 40px 50px;
+}
+
+/* Título principal */
+.container > h1 {
+  width: 100%;
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #ffd700; /* dourado */
+ 
+}
+
+/* Formulário e câmera lado a lado */
+.form-section, .camera-section {
+  flex: 1 1 45%;
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(8, 2, 96, 0.85);
+  border-radius: 12px;
+  padding: 30px 25px;
+}
+
+/* Labels */
+label {
+  align-self: flex-start;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #ffec99;
+}
+
+/* Inputs */
+input[type="text"],
+input[type="email"],
+input[type="file"] {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #f0f0f0;
+  color: #222;
+  transition: box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="file"]:focus {
+  outline: none;
+}
+
+/* Botões */
+button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+.btn-submit {
+  background-color: #ffd700;
+  color: #222;
+  margin-top: 10px;
+}
+
+.btn-submit:hover {
+  background-color: #ffb800;
+}
+
+.btn-capture {
+  background-color: #4caf50;
+  color: white;
+  margin-top: 20px;
+}
+
+.btn-capture:hover {
+  background-color: #3b8e40;
+}
+
+/* Vídeo e imagem preview */
+video, img#preview {
+  width: 100%;
+  max-width: 380px;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(2, 9, 89, 0.7);
+  margin-top: 15px;
+  background-color: #140663;
+}
+/* Canvas oculto */
+canvas {
+  display: none;
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+  .container {
+    flex-wrap: wrap;
+    padding: 30px 20px;
+  }
+
+  .form-section, .camera-section {
+    flex: 1 1 100%;
+    max-width: 450px;
+    margin: 0 auto 30px auto;
+  }
+}
