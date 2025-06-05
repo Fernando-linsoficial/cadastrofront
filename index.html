@@ -1,39 +1,40 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cadastro de Documento e Foto</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cadastro com Foto</title>
+  <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
+
   <main class="container">
     <div class="text">
       <h1>Cadastro Para Reconhecimento Facial</h1>
     </div>
     <section class="form-section">
-      <form action="salvar.php" method="POST" enctype="multipart/form-data" onsubmit="return enviarImagem();">
-        <label for="nome">Nome Completo:</label>
-        <input type="text" name="nome" id="nome" required />
+      <form id="userForm">
+        <label>Nome:</label>
+        <input type="text" name="nome" required />
 
-        <label for="serie">Série:</label>
-        <input type="text" name="serie" id="serie" required />
+        <label>Email:</label>
+        <input type="email" name="email" required />
 
-        <label for="email">E-mail:</label>
-        <input type="email" name="email" id="email" required />
+        <label>CPF:</label>
+        <input type="text" name="cpf" required />
 
-        <label for="cpf">CPF:</label>
-        <input type="text" name="cpf" id="cpf" required />
+        <label>Série:</label>
+        <input type="text" name="serie" required />
 
-        <input type="hidden" name="imagemFacial" id="imagemFacial" />
-        <button type="submit" class="btn-submit">Cadastrar</button>
+        <input type="hidden" name="imagemfacial" id="imagemFacial" />
+        <button class="btn-submit" type="submit">Enviar Dados</button>
       </form>
     </section>
 
     <section class="camera-section">
       <label>Captura Facial (use sua webcam):</label>
       <video id="video" autoplay playsinline></video>
-      <button type="button" class="btn-capture" onclick="capturar()">Capturar Rosto</button>
+      <button type="button" class="btn-capture" id="capture">Capturar Foto</button>
       <canvas id="canvas" style="display:none;"></canvas>
       <img id="preview" />
     </section>
