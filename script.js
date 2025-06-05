@@ -1,3 +1,8 @@
+import Parse from 'parse';
+
+Parse.initialize("YOUR_APP_ID", "YOUR_JAVASCRIPT_KEY");
+Parse.serverURL = 'https://parseapi.back4app.com/';
+
 const video = document.getElementById('video');
 const canvas = document.getElementById('canvas');
 const imagemFacial = document.getElementById('imagemFacial');
@@ -20,10 +25,35 @@ function capturar() {
   preview.src = dataURL;
 }
 
-function enviarImagem() {
+async function enviarImagem() {
+  const form = document.getElementById('formCadastro');
+  const formData = new FormData(form);
+
   if (!imagemFacial.value) {
     alert("Por favor, capture sua imagem facial.");
     return false;
   }
-  return true;
+
+  try {
+    const parseFile = new Parse.File('imagemFacial.png', { base64: imagemFacial.value.split(',')[1] });
+    await parseFile.save();
+
+    const Usuario = Parse.Object.extend('Usuario');
+    const usuario = new Usuario();
+    usuario.set('nome', formData.get('nome'));
+    usuario.set('serie', formData.get('serie'));
+    usuario.set('email', formData.get('email'));
+    usuario.set('cpf', formData.get('cpf'));
+    usuario.set('foto', parseFile);
+
+    await usuario.save();
+    alert("Cadastro realizado com sucesso!");
+    form.reset();
+    preview.src = '';
+  } catch (error) {
+    console.error("Erro ao enviar dados:", error);
+    alert("Erro ao enviar dados.");
+  }
+
+  return false;
 }
