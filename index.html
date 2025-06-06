@@ -11,19 +11,18 @@
   <main class="container">
     <div class="text">
       <h1>Cadastro Para Reconhecimento Facial</h1>
+      <p>Preencha o formulário ao lado e utilize sua webcam para capturar uma imagem facial. Isso permitirá que o sistema utilize reconhecimento facial para validar sua identidade futuramente.</p>
     </div>
+
     <section class="form-section">
       <form id="userForm">
-        <label>Nome:</label>
+        <label>Nome do Estudante:</label>
         <input type="text" name="nome" required />
 
-        <label>Email:</label>
+        <label>Email do Estudante:</label>
         <input type="email" name="email" required />
 
-        <label>CPF:</label>
-        <input type="text" name="cpf" required />
-
-        <label>Série:</label>
+        <label>Série do Estudante:</label>
         <input type="text" name="serie" required />
 
         <input type="hidden" name="imagemfacial" id="imagemFacial" />
@@ -39,7 +38,7 @@
       <img id="preview" />
     </section>
   </main>
-
+  <footer></footer>
   <script src="script.js"></script>
 </body>
 </html>
