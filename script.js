@@ -24,20 +24,37 @@ captureButton.addEventListener('click', () => {
   preview.src = imageData;
   preview.style.display = 'block';
   preview.dataset.image = imageData;
+
+  // Atualiza o input hidden para enviar junto no form (opcional)
+  document.getElementById('imagemFacial').value = imageData;
 });
 
-// Envio do formulário com imagem
+// Envio do formulário com validação
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  const formData = new FormData(form);
+  const nome = document.querySelector('input[name="nome"]').value.trim();
+  const email = document.querySelector('input[name="email"]').value.trim();
+  const serie = document.querySelector('input[name="serie"]').value.trim();
   const imageBase64 = preview.dataset.image || '';
 
+  // Validação dos campos
+  if (!nome || !email || !serie || !imageBase64) {
+    alert("Por favor, preencha todos os campos e capture a foto.");
+    return;
+  }
+
+  // Validação simples de email
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    alert("Por favor, insira um e-mail válido.");
+    return;
+  }
+
   const json = {
-    nome: formData.get("nome"),
-    email: formData.get("email"),
-    cpf: formData.get("cpf"),
-    serie: formData.get("serie"),
+    nome,
+    email,
+    serie,
     imagemfacial: imageBase64
   };
 
@@ -51,9 +68,7 @@ form.addEventListener('submit', async (e) => {
     });
 
     if (res.ok) {
-      alert("Dados enviados com sucesso!");
-      form.reset();
-      preview.style.display = 'none';
+      window.location.href = 'sucesso.html';
     } else {
       alert("Erro ao enviar os dados.");
       console.error(await res.text());
