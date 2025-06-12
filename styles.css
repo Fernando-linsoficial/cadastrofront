@@ -193,12 +193,6 @@ footer {
     z-index: 1; /* Garante que o rodapé esteja acima do overlay do body::before */
 }
 
-footer h3 {
-    color: #f8f9fa; /* Cor do título (branco) */
-    font-size: 1.5em;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-}
 
 footer p {
     margin-bottom: 10px;
@@ -220,7 +214,7 @@ footer ul li {
 }
 
 footer a {
-    color: #F2E313; /* Cor do link que contrasta bem */
+    color: white; /* Cor do link que contrasta bem */
     text-decoration: none;
     transition: color 0.3s ease;
 }
