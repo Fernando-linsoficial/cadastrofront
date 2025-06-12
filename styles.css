@@ -18,7 +18,7 @@ body {
 }
 body::before {
   content: '';
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -65,6 +65,7 @@ p{
   justify-content: center;
 
   padding: 40px 50px;
+  flex-grow: 1;
 }
 
 /* Título principal */
@@ -107,8 +108,6 @@ input[type="text"],
 input[type="email"] {
     width: 100%;
     padding: 14px 18px;
-    /* Remova esta linha ↓ */
-    /* margin-top: 15px; */
     border: none;
     border-radius: 10px;
     font-size: 1.1rem;
@@ -183,6 +182,52 @@ video, img#preview {
 /* Canvas oculto */
 canvas {
   display: none;
+}
+footer {
+    margin-top: auto;
+    color: #e9ecef; /* Cor do texto principal clara */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Consistente com seu body */
+    line-height: 1.6;
+    text-align: center;
+    position: relative; /* Necessário para que o z-index funcione, se houver conflito */
+    z-index: 1; /* Garante que o rodapé esteja acima do overlay do body::before */
+}
+
+footer h3 {
+    color: #f8f9fa; /* Cor do título (branco) */
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+footer p {
+    margin-bottom: 10px;
+    max-width: 800px; /* Limita a largura do parágrafo para melhor leitura */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 15px;
+    display: inline-block; /* Para centralizar a lista como um bloco */
+    text-align: left; /* Alinha os itens da lista à esquerda */
+}
+
+footer ul li {
+    margin-bottom: 5px;
+}
+
+footer a {
+    color: #F2E313; /* Cor do link que contrasta bem */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #99d6ff; /* Cor do link ao passar o mouse */
+    text-decoration: underline;
 }
 
 /* Responsividade */
