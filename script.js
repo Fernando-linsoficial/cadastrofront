@@ -59,7 +59,7 @@ form.addEventListener('submit', async (e) => {
   };
 
   try {
-    const res = await fetch('http://localhost:8080/usuarios', {
+    const res = await fetch('https://cadastroback.onrender.com/usuarios', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
